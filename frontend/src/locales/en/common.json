@@ -1,0 +1,416 @@
+{
+  "nav": {
+    "home": "Home",
+    "classes": "Classes",
+    "featuredChapters": "Featured Chapters",
+    "freeChapters": "Free Chapters",
+    "myDashboard": "My Dashboard",
+    "assignedChapters": "Assigned Chapters",
+    "myProfile": "My Profile",
+    "payments": "Payments",
+    "myChapters": "My Chapters",
+    "support": "Support"
+  },
+  "footer": {
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "rights": "All rights reserved.",
+    "description": "Redefining how true learning happens."
+  },
+  "classes": {
+    "title": "Available Classes",
+    "subtitle": "Explore our comprehensive curriculum and join the class that matches your educational goals.",
+    "exploreSubjects": "Explore Subjects",
+    "noClasses": "No classes found",
+    "noClassesSub": "We're still setting up our course catalog. Please check back soon!",
+    "loading": "Arranging our class catalog...",
+    "detailsLoading": "Fetching class details...",
+    "error": "Failed to load classes. Please try again later.",
+    "contentError": "Failed to load class content.",
+    "notFound": "Class not found",
+    "fallbackDesc": "Explore our comprehensive curriculum and dedicated resources for this academic level.",
+    "subjectFallbackDesc": "Explore the published chapters and learning materials for this subject.",
+    "viewChapters": "View Chapters",
+    "chapter": "Chapter",
+    "chapters": "Chapters",
+    "subject": "Subject",
+    "noSubjects": "No subjects available yet",
+    "noSubjectsSub": "We're still organizing the subjects for this class.",
+    "subjectLoading": "Fetching subject details...",
+    "subjectContentError": "Failed to load subject content.",
+    "subjectNotFound": "Subject not found",
+    "noChapters": "No chapters available yet.",
+    "noChaptersSub": "We're still preparing the chapters for this subject."
+  },
+  "featuredChapters": {
+    "title": "Featured Chapters",
+    "subtitle": "Elevate your learning with our most popular and highly-rated lessons, handpicked by our expert educators.",
+    "badge": "CURATED SELECTIONS",
+    "loading": "Collecting our best chapters...",
+    "noChapters": "No featured chapters yet",
+    "noChaptersSub": "Check back soon for our top picks!",
+    "error": "Failed to load featured chapters."
+  },
+  "freeChapters": {
+    "title": "Free Chapters",
+    "subtitle": "Sample our quality. Dive into these complimentary lessons and experience the Montola School advantage before you commit.",
+    "badge": "OPEN ACCESS",
+    "loading": "Unlocked! Fetching free chapters...",
+    "noChapters": "No free chapters right now",
+    "noChaptersSub": "We're updating our free catalog. Check back soon!",
+    "error": "Failed to load free chapters.",
+    "startLearning": "Start Learning",
+    "enrollNow": "Enroll Now",
+    "freeAccess": "Free Access"
+  },
+  "chapterPublic": {
+    "loading": "Loading chapter details...",
+    "notFound": "Chapter not found",
+    "error": "Failed to load chapter details.",
+    "preview": "PREVIEW",
+    "instructors": "Instructors",
+    "faculty": "Montola Faculty",
+    "status": "Status",
+    "price": "Price",
+    "progress": "Progress",
+    "continueLearning": "CONTINUE LEARNING",
+    "verificationPending": "Verification Pending",
+    "verificationPendingSub": "Please wait for admin to verify your payment. This usually takes less than 24 hours.",
+    "rejected": "Your previous payment was rejected. Please resubmit the payment info.",
+    "enrolling": "PROCESSING...",
+    "enrollNow": "ENROLL NOW",
+    "resubmitPayment": "RESUBMIT PAYMENT INFO",
+    "buyChapter": "BUY THIS CHAPTER",
+    "loginRequired": "Login required to access",
+    "loginToEnroll": "You need to login first to enroll.",
+    "loginToPurchase": "You need to login first to purchase.",
+    "enrollSuccess": "Enrolled successfully!",
+    "enrollFailed": "Failed to enroll. Please try again.",
+    "paymentSuccess": "Payment submitted successfully! Waiting for verification.",
+    "paymentFailed": "Failed to submit payment details.",
+    "enrollToAccess": "You need to enroll to access this content.",
+    "buyToAccess": "You need to purchase this chapter to access this content.",
+    "whatYouWillLearn": "What you'll learn",    "fallbackDescription": "Master this topic with our expert-led chapter tutorials, exclusive resources, and interactive quizzes.",
+    "noGeneral": "General",
+    "features": {
+      "live": "Live classes",
+      "sheets": "Lecture sheets",
+      "webapp": "Dedicated webapp",
+      "notice": "Exclusive notice board feature",
+      "exams": "World class exam system"
+    }
+  },  "paymentModal": {
+    "title": "Complete Your Payment",
+    "chapterHeader": "Chapter",
+    "totalAmount": "Total Amount:",
+    "howToPayTitle": "How to pay",
+    "howToPayStep1": "1. Send <strong>৳ {{amount}}</strong> to our bKash Merchant number: <span className=\"font-bold underline\">{{number}}</span>",
+    "howToPayStep2": "2. Copy the <strong>Transaction ID</strong> and enter it below along with your <strong>Sender Number</strong>.",
+    "paymentMethod": "Payment Method",
+    "senderNumber": "Your bKash/Nagad Number",
+    "senderNumberPlaceholder": "e.g. 01XXXXXXXXX",
+    "transactionId": "Transaction ID",
+    "transactionIdPlaceholder": "e.g. TRX12345ABC",
+    "cancel": "Cancel",
+    "submit": "Submit Payment",
+    "errorSenderRequired": "Sender number is required",
+    "errorTxnRequired": "Transaction ID is required",
+    "errorInvalidFormat": "Invalid phone number format"
+  },
+  "auth": {
+    "login": "Log In",
+    "register": "Register",
+    "logout": "Logout",
+    "backToLogin": "Back To Login",
+    "loginSuccess": "Logged in successfully",
+    "logoutSuccess": "Logged out successfully",
+    "passwordPolicy": "Password must be at least 5 characters long and include at least one letter and one number",
+    "invalidEmail": "Please enter a valid email address",
+    "invalidPhone": "Phone number must be 11 digits and start with 01.",
+    "emailExists": "This email is already registered.",
+    "passwordMismatch": "Passwords do not match",
+    "alreadyRegistered": "Already have an account? Please login.",
+    "registrationFailed": "Failed to register",
+    "registrationSuccess": "Registration successful! Please check your email to activate your account.",
+    "verifyEmailTitle": "Verify Your Email",
+    "verifyEmailMessage": "A verification link has been sent to {{email}}. Please verify within 15 minutes.",
+    "activating": "Activating your account...",
+    "resendFailed": "Failed to resend token. Please try again later.",
+    "resendActivation": "Resend Activation Link",
+    "activationSuccess": "Account activated successfully! Redirecting to login...",
+    "activationExpired": "Activation token expired. You can resend the activation link.",
+    "activationAlreadyDone": "Account already activated. Redirecting to login...",
+    "activationFailed": "Activation failed. Please try again.",
+    "forgotPassword": "Forgot Password?",
+    "resetPassword": "Reset Password",
+    "sendResetLink": "Send Reset Link",
+    "resetLinkSentCheckEmail": "Reset Link sent. Please check your mail",
+    "passwordResetSuccess": "Password has been reset successfully. Please log in.",
+    "resetFailed": "Password reset failed. Please try again.",
+    "resetTokenExpired": "Your reset link has expired.",
+    "resetTokenExpiredInfo": "The reset link has expired. Click below to resend a new link.",
+    "resendReset": "Resend Reset Link",
+    "resetResent": "A new reset link has been sent to your email.",
+    "resetResendFailed": "Failed to resend reset link.",
+    "invalidResetLink": "Invalid or missing reset link.",
+    "goToLogin": "Go to Login",
+    "goToRegister": "Go to Register",
+    "userNotFound": "User not found",
+    "invalidCredentials": "Invalid username or password",
+    "sessionExpired": "Your session has expired. Please log in again."
+  },
+  "roles": {
+    "student": "Student",
+    "teacher": "Teacher",
+    "manager": "Manager",
+    "admin": "Admin"
+  },
+  "form": {
+    "user": {
+      "email": "Email",
+      "phone": "Phone (optional)",
+      "password": "Password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm Password",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "fullNameRequired": "Full Name is required",
+      "role": "Role",
+      "emailPlaceholder": "Enter your email",
+      "phonePlaceholder": "01XXXXXXXXX (optional)",
+      "passwordPlaceholder": "Enter password",
+      "confirmPasswordPlaceholder": "Re-enter password"
+    },
+    "course": {
+      "title": "Course Title",
+      "description": "Description",
+      "price": "Price",
+      "enroll": "Enroll Now"
+    },
+    "package": {
+      "name": "Package Name",
+      "description": "Description",
+      "price": "Price"
+    }
+  },
+  "messages": {
+    "loading": "Loading...",
+    "error": "Something went wrong. Please try again later.",
+    "success": "Operation completed successfully.",
+    "createdSuccess": "User created successfully",
+    "errorCreate": "Failed to create user",
+    "errorFetch": "Failed to fetch users"
+  },
+  "course": {
+    "title": "Courses",
+    "noCourses": "No courses available."
+  },
+  "teacher": {
+    "title": "Teachers",
+    "noTeachers": "No teachers available.",
+    "dashboard": "Teacher Dashboard",
+    "assignedChapters": "Assigned Chapters",
+    "chapterDetails": "Chapter Details",
+    "addTopic": "Add Topic",
+    "editTopic": "Edit Topic",
+    "deleteTopic": "Delete Topic",
+    "addContent": "Add Content",
+    "editContent": "Edit Content",
+    "deleteContent": "Delete Content",
+    "contentType": {
+      "lecture": "Lecture",
+      "pdf": "PDF",
+      "quiz": "Quiz"
+    }
+  },
+  "student": {
+    "title": "Students",
+    "noStudents": "No students available.",
+    "dashboard": {
+      "welcome": "Welcome back, {{name}}! 👋",
+      "subtitle": "Pick up where you left off.",
+      "notEnrolledTitle": "You haven't enrolled in any courses yet.",
+      "notEnrolledSubtitle": "Explore our catalog to start learning.",
+      "browseCourses": "Browse Courses",
+      "completed": "COMPLETED",
+      "inProgress": "IN PROGRESS",
+      "finished": "Finished",
+      "continueLearning": "Continue Learning",
+      "yourProgress": "Your Progress",
+      "review": "REVIEW",
+      "resume": "RESUME",
+      "recentPayments": "Recent Payments",
+      "paymentSubtitle": "Status of your course enrollments",
+      "manageAccount": "Manage Account",
+      "noPaymentHistory": "No payment history found.",
+      "chapter": "Chapter",
+      "amount": "Amount",
+      "transactionId": "Transaction ID",
+      "status": "Status",
+      "statusPending": "PENDING",
+      "statusVerified": "VERIFIED",
+      "statusRejected": "REJECTED",
+      "preparingOverview": "Preparing your chapter overview...",
+      "courseOverview": "Course Overview",
+      "readyToLearn": "Ready to learn?",
+      "selectTopic": "Select a topic from the sidebar to start watching videos or taking quizzes.",
+      "loadingCourseMaterial": "Loading course material...",
+      "courseContentNotFound": "Course content not found",
+      "pleaseLogin": "Please log in to view your dashboard.",
+      "login": "Login"
+    },
+    "profile": {
+      "title": "My Profile",
+      "subtitle": "Manage your account settings and security.",
+      "security": "Security",
+      "updatePasswordSubtitle": "Update your account password",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmNewPassword": "Confirm New Password",
+      "updatePassword": "Update Password",
+      "updating": "Updating...",
+      "personalInfo": "Personal Information",
+      "registeredDetails": "Registered details",
+      "fullName": "Full Name",
+      "emailAddress": "Email Address",
+      "phoneNumber": "Phone Number",
+      "memberSince": "Member Since",
+      "imageUploadError": "File size should be less than 2MB",
+      "passwordMismatch": "New passwords do not match",
+      "passwordLength": "Password must be at least 6 characters",
+      "passwordSuccess": "Password changed successfully!",
+      "userIdNotFound": "User identity not found. Please re-login.",
+      "profilePictureSuccess": "Profile picture updated successfully!",
+      "profilePictureError": "Failed to upload profile picture.",
+      "wrongPassword": "Wrong Password",
+      "changePasswordError": "Failed to change password"
+    },
+    "contentPlayer": {
+      "fetchingContent": "Fetching your content...",
+      "accessDenied": "Access Denied",
+      "goBack": "Go Back",
+      "contentNotFound": "Content not found",
+      "lecture": "Lecture",
+      "quiz": "Quiz",
+      "referencePdf": "Reference PDF",
+      "noVideo": "No video available",
+      "lectureSummary": "Lecture Summary",
+      "pages": "Pages",
+      "instructions": "Instructions",
+      "assessmentPassed": "Assessment Passed!",
+      "assessmentFailed": "Assessment Failed",
+      "totalScore": "Total Score:",
+      "required": "Required",
+      "tryAgain": "Try Again",
+      "marks": "Marks",
+      "selectMatch": "Select match",
+      "correctAnswers": "Correct answers",
+      "correct": "Correct",
+      "incorrect": "Incorrect",
+      "typeAnswer": "type answer...",
+      "sampleAnswer": "Sample Answer",
+      "submitAssessment": "Submit Assessment",
+      "quizSubmitted": "Quiz results submitted.",
+      "finishedLesson": "Finished this lesson?",
+      "markComplete": "Mark as Complete",
+      "nextLesson": "Next Lesson",
+      "finishChapter": "Finish Chapter",
+      "congratulations": "Congratulations! You've completed all items in this chapter.",
+      "markedComplete": "Marked as complete!",
+      "failedMarkComplete": "Failed to mark as complete",
+      "passMessage": "Success! You passed with {{score}}/{{total}} ({{percentage}}%)",
+      "failMessage": "You did not pass. Score: {{score}}/{{total}} ({{percentage}}%). Required: {{passPercentage}}%",
+      "failedSaveResults": "Failed to save passing results",
+      "completed": "Completed",
+      "questionTypes": {
+        "MULTIPLE_CHOICE": "Multiple Choice",
+        "FILL_IN_THE_BLANK": "Fill in the Blanks",
+        "MATCHING": "Matching",
+        "WRITTEN": "Written"
+      }
+    },
+    "sidebar": {
+      "dashboard": "Dashboard",
+      "chapterProgress": "CHAPTER PROGRESS",
+      "lessons": "Lessons"
+    }
+  },
+  "admin": {
+    "dashboard": "Admin Dashboard",
+    "brand": "Montola Admin",
+    "nav": {
+      "dashboardOverview": "Dashboard Overview",
+      "users": "User Management",
+      "classes": "Classes",
+      "subjects": "Subjects",
+      "chapters": "Chapters",
+      "featuredChapters": "Featured Chapters",
+      "purchaseVerification": "Purchase Verification"
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Redefining how true learning happens.",
+      "subtitle": "In a world that rewards memorized answers, Montola School builds curious minds. We don't just teach the How — we teach every student to ask Why.",
+      "startLearning": "Start Learning",
+      "exploreClasses": "Explore Classes"
+    },
+    "featured": {
+      "title": "Featured Chapters",
+      "loading": "Discovering featured courses...",
+      "badge": "FEATURED",
+      "preview": "PREVIEW"
+    },
+    "free": {
+      "title": "Try for Free",
+      "subtitle": "Our free resources represent how we build our contents for students.",
+      "loading": "Finding free lessons for you...",
+      "badge": "FREE",
+      "enrollNow": "ENROLL NOW"
+    },
+    "classes": {
+      "title": "Available Classes",
+      "subtitle": "Select a Class you want to explore",
+      "loading": "Arranging our class catalog..."
+    },
+    "valueProps": {
+      "titlePart1": "Why we started ",
+      "titlePart2": "Montola School?",
+      "descriptionPart1": "Too many students in the Chittagong Hill Tracts are falling behind — not because they lack ability, but because the system was never built for them. Montola School exists to change that — ",
+      "descriptionPart2": "redefining how true learning happens in the hills.",
+      "props": {
+        "why": {
+          "title": "Start With Why",
+          "desc": "Instead of just teaching students what the answer is, we guide them to see why that answer is the only logical conclusion."
+        },
+        "personalized": {
+          "title": "Personalized learning",
+          "desc": "Because everyone learns differently, teaching works best when it is made just for you."
+        },
+        "reciprocal": {
+          "title": "Reciprocal teaching",
+          "desc": "When you have to explain a concept to someone else, your brain organizes the information more clearly, making the lesson much harder to forget."
+        }
+      },
+      "comparison": {
+        "conventional": "The Conventional Student",
+        "montola": "The Montola Student",
+        "row1": {
+          "left": "Asks: \"Will this be on the exam?\"",
+          "right": "Asks: \"How does this connect to what we learned yesterday?\""
+        },
+        "row2": {
+          "left": "Waits for the teacher to start speaking.",
+          "right": "Interrupts with a \"Why\" before the teacher finishes."
+        },
+        "row3": {
+          "left": "Memorizes the steps to solve a problem.",
+          "right": "Can explain why a different step wouldn't work."
+        }
+      }
+    }
+  }
+}
