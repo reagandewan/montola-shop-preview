@@ -93,6 +93,7 @@ export const getMyShopPayments = async () => {
 export interface AdminShopPayment extends ShopPaymentRecord {
     userName: string | null;
     senderNumber: string;
+    transactionId: string;
     paymentMethod: string;
     productTitle: string | null;
     bundleTitle: string | null;
