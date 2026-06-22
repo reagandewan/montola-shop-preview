@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: montola-demo-backend
+    runtime: node
+    rootDir: demo-backend
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
