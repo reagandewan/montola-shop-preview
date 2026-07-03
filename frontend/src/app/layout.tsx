@@ -6,12 +6,20 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AppChrome from "@/components/AppChrome";
 import NextTopLoader from "nextjs-toploader";
-import { Poppins } from "next/font/google";
+import { Poppins, Lora } from "next/font/google";
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-poppins",
+});
+
+// Serif used sparingly for editorial accents (hero, section headings, motto)
+const lora = Lora({
+  subsets: ["latin"],
+  weight: ["500", "600"],
+  style: ["normal", "italic"],
+  variable: "--font-lora",
 });
 
 export const metadata = {
@@ -28,10 +36,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={poppins.variable}>
-      <body className="font-sans">
+    <html lang="en" className={`${poppins.variable} ${lora.variable}`}>
+      <body className="font-sans antialiased" suppressHydrationWarning>
         <NextTopLoader
-          color="#ea580c"
+          color="#2ca83e"
           initialPosition={0.08}
           crawlSpeed={200}
           height={3}
@@ -39,7 +47,7 @@ export default function RootLayout({
           showSpinner={false}
           easing="ease"
           speed={200}
-          shadow="0 0 10px #ea580c,0 0 5px #ea580c"
+          shadow="0 0 10px #2ca83e,0 0 5px #2ca83e"
         />
         <AuthProvider>
           <I18nProvider>

@@ -94,14 +94,14 @@ export default function FreeChapterList() {
                             <ChapterImage chapter={c} />
                             <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors" />
                             <div className="absolute top-3 right-3">
-                                <span className="px-2 py-1 bg-green-600 text-[10px] font-black text-white rounded shadow-sm">
+                                <span className="px-2 py-1 bg-green-600 text-[10px] font-bold text-white rounded shadow-sm">
                                     {t("home.free.badge")}
                                 </span>
                             </div>
                         </div>
                         <div className="p-6 flex flex-col flex-grow text-center">
                             <h3 className="text-xl font-bold mb-1 group-hover:text-primary-600 transition line-clamp-1">{c.title}</h3>
-                            <p className="text-gray-400 text-[10px] font-black tracking-widest uppercase mb-4">{c.subjectName}</p>
+                            <p className="text-gray-400 text-[10px] font-bold tracking-widest uppercase mb-4">{c.subjectName}</p>
                             <p className="text-gray-600 mb-6 line-clamp-2 text-sm leading-relaxed">{c.description}</p>
                             <div className="mt-auto">
                                 {enrollmentMap.has(c.id) && (
@@ -112,18 +112,18 @@ export default function FreeChapterList() {
                                                 style={{ width: `${enrollmentMap.get(c.id)}%` }}
                                             />
                                         </div>
-                                        <span className="text-[10px] font-black text-green-600">{Math.round(enrollmentMap.get(c.id) || 0)}%</span>
+                                        <span className="text-[10px] font-bold text-green-600">{Math.round(enrollmentMap.get(c.id) || 0)}%</span>
                                     </div>
                                 )}
                                 {enrollmentMap.has(c.id) ? (
                                     <span
-                                        className="w-full py-3 px-4 bg-green-600 text-white rounded-lg font-black text-xs tracking-widest group-hover:bg-green-700 transition flex items-center justify-center gap-2 shadow-lg shadow-green-50"
+                                        className="w-full py-3 px-4 bg-green-600 text-white rounded-lg font-bold text-xs tracking-widest group-hover:bg-green-700 transition flex items-center justify-center gap-2 shadow-lg shadow-green-50"
                                     >
                                         <FaPlay size={10} /> {t("student.dashboard.resume")}
                                     </span>
                                 ) : (
                                     <span
-                                        className="block w-full py-3 px-4 border-2 border-primary-600 text-primary-600 rounded-lg font-black text-xs tracking-widest group-hover:bg-primary-600 group-hover:text-white transition-all transform group-hover:-translate-y-1"
+                                        className="block w-full py-3 px-4 border-2 border-primary-600 text-primary-600 rounded-lg font-bold text-xs tracking-widest group-hover:bg-primary-600 group-hover:text-white transition-all transform group-hover:-translate-y-1"
                                     >
                                         {t("home.free.enrollNow")}
                                     </span>

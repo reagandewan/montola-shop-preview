@@ -12,6 +12,7 @@ function registerShop(app, ctx) {
   const { auth, userById, chapterById, subjectById, classById, isAdminOrManager, getUserFromReq } = ctx;
 
   const levelById = (id) => shop.levels.find((l) => l.id === Number(id));
+  const shopClassById = (id) => shop.classes.find((c) => c.id === Number(id));
   const productById = (id) => shop.products.find((p) => p.id === Number(id));
   const bundleById = (id) => shop.bundles.find((b) => b.id === Number(id));
 
@@ -54,8 +55,10 @@ function registerShop(app, ctx) {
     const subject = p.subjectId ? subjectById(p.subjectId) : null;
     const chapter = p.chapterId ? chapterById(p.chapterId) : null;
     const level = p.levelId ? levelById(p.levelId) : null;
+    const cls = p.classId ? shopClassById(p.classId) : null;
     return {
       levelId: p.levelId || null, levelName: level ? level.name : null,
+      classId: p.classId || null, className: cls ? cls.name : null,
       subjectId: p.subjectId || null, subjectName: subject ? subject.name : null,
       chapterId: p.chapterId || null, chapterTitle: chapter ? chapter.title : null,
     };
@@ -115,12 +118,21 @@ function registerShop(app, ctx) {
   // ==========================================================================
   app.get("/api/v1/shop/levels", (_req, res) => res.json(shop.levels));
 
+  // Classes (optionally filtered by level) for the class-tier browse.
+  app.get("/api/v1/shop/classes", (req, res) => {
+    const { levelId } = req.query;
+    let list = [...shop.classes].sort((a, b) => a.levelId - b.levelId || a.orderIndex - b.orderIndex);
+    if (levelId) list = list.filter((c) => c.levelId === Number(levelId));
+    res.json(list);
+  });
+
   app.get("/api/v1/shop/products", (req, res) => {
-    const { type, levelId, subjectId, chapterId, format } = req.query;
+    const { type, levelId, classId, subjectId, chapterId, format } = req.query;
     let list = shop.products.filter((p) => p.status === "PUBLISHED");
     if (type) list = list.filter((p) => p.type === type);
     if (format) list = list.filter((p) => p.format === format);
     if (levelId) list = list.filter((p) => p.levelId === Number(levelId));
+    if (classId) list = list.filter((p) => p.classId === Number(classId));
     if (subjectId) list = list.filter((p) => p.subjectId === Number(subjectId));
     if (chapterId) list = list.filter((p) => p.chapterId === Number(chapterId));
     res.json(list.map(productCard));
@@ -258,7 +270,8 @@ function registerShop(app, ctx) {
     const p = {
       id: ++shop.counters.product, title: b.title, description: b.description || "",
       type: b.type, format: b.format || "PDF", price: b.price ?? 0,
-      levelId: b.levelId || null, subjectId: b.subjectId || null, chapterId: b.chapterId || null,
+      levelId: b.levelId || null, classId: b.classId || null,
+      subjectId: b.subjectId || null, chapterId: b.chapterId || null,
       status: b.status || "DRAFT", featured: !!b.featured, preview: b.preview || "",
       content: b.content || {},
     };

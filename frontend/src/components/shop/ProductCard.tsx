@@ -5,7 +5,7 @@ import type { ShopProductCard } from "@/types/shop";
 export default function ProductCard({ product }: { product: ShopProductCard }) {
     const meta = PRODUCT_TYPE_META[product.type];
     const Icon = meta.icon;
-    const scope = [product.levelName, product.subjectName, product.chapterTitle].filter(Boolean).join(" · ");
+    const scope = [product.className || product.levelName, product.subjectName, product.chapterTitle].filter(Boolean).join(" · ");
 
     return (
         <Link

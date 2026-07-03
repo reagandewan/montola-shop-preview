@@ -6,9 +6,10 @@ import { useAuth } from "@/contexts/AuthContext";
 import { getHighestPriorityRole, getRouteForRole } from "@/lib/roles";
 
 import Hero from "@/components/Hero";
+import NoticesSection from "@/components/NoticesSection";
+import WhatsNewSection from "@/components/WhatsNewSection";
 import ValueProps from "@/components/ValueProps";
 import FeaturedCourses from "@/components/FeaturedCourses";
-import FreeChapterList from "@/components/FreeChapterList";
 import ClassesListSection from "@/components/ClassesListSection";
 import ShopHomeSection from "@/components/shop/ShopHomeSection";
 
@@ -62,10 +63,9 @@ export default function HomePage() {
     return (
         <main className="overflow-x-hidden">
             <Hero />
+            <NoticesSection />
+            <WhatsNewSection />
             <ClassesListSection />
-            <div id="free">
-                <FreeChapterList />
-            </div>
             <div id="featured">
                 <FeaturedCourses />
             </div>

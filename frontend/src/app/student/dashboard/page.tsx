@@ -154,7 +154,7 @@ export default function StudentDashboard() {
                                     <ChapterImage item={item} />
                                     <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors" />
                                     <div className="absolute top-3 right-3">
-                                        <span className={`text-[10px] font-black px-2 py-1 rounded shadow-sm flex items-center gap-1 ${item.completed ? 'bg-green-500 text-white' : 'bg-primary-600 text-white'}`}>
+                                        <span className={`text-[10px] font-bold px-2 py-1 rounded shadow-sm flex items-center gap-1 ${item.completed ? 'bg-green-500 text-white' : 'bg-primary-600 text-white'}`}>
                                             {item.completed ? <FaAward /> : <FaClock />}
                                             {item.completed ? t("student.dashboard.completed") : t("student.dashboard.inProgress")}
                                         </span>
@@ -163,7 +163,7 @@ export default function StudentDashboard() {
                                 <div className="p-5">
                                     <div className="mb-4">
                                         <h3 className="text-lg font-bold text-gray-900 group-hover:text-primary-600 transition line-clamp-1">{item.chapterTitle}</h3>
-                                        <p className="text-[10px] font-black text-gray-400 tracking-widest uppercase">
+                                        <p className="text-[10px] font-bold text-gray-400 tracking-widest uppercase">
                                             {item.progressPercentage === 100 ? t("student.dashboard.finished") : t("student.dashboard.continueLearning")}
                                         </p>
                                     </div>
@@ -171,7 +171,7 @@ export default function StudentDashboard() {
                                     <div className="space-y-4">
                                         <div className="flex items-center justify-between text-xs">
                                             <span className="text-gray-500 font-medium">{t("student.dashboard.yourProgress")}</span>
-                                            <span className="font-black text-primary-600">{Math.round(item.progressPercentage)}%</span>
+                                            <span className="font-bold text-primary-600">{Math.round(item.progressPercentage)}%</span>
                                         </div>
 
                                         <div className="w-full bg-gray-100 rounded-full h-1.5 overflow-hidden">
@@ -182,7 +182,7 @@ export default function StudentDashboard() {
                                         </div>
 
                                         <div className="pt-2 flex items-center justify-end">
-                                            <span className="text-sm font-black text-primary-600 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+                                            <span className="text-sm font-bold text-primary-600 group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
                                                 {item.completed ? t("student.dashboard.review") : t("student.dashboard.resume")} &rarr;
                                             </span>
                                         </div>
@@ -215,17 +215,17 @@ export default function StudentDashboard() {
                                 <table className="w-full text-left border-collapse">
                                     <thead>
                                         <tr className="bg-gray-50 border-b border-gray-100">
-                                            <th className="px-6 py-4 text-xs font-black text-gray-400 uppercase tracking-widest">{t("student.dashboard.chapter")}</th>
-                                            <th className="px-6 py-4 text-xs font-black text-gray-400 uppercase tracking-widest">{t("student.dashboard.amount")}</th>
-                                            <th className="px-6 py-4 text-xs font-black text-gray-400 uppercase tracking-widest">{t("student.dashboard.transactionId")}</th>
-                                            <th className="px-6 py-4 text-xs font-black text-gray-400 uppercase tracking-widest">{t("student.dashboard.status")}</th>
+                                            <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-widest">{t("student.dashboard.chapter")}</th>
+                                            <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-widest">{t("student.dashboard.amount")}</th>
+                                            <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-widest">{t("student.dashboard.transactionId")}</th>
+                                            <th className="px-6 py-4 text-xs font-bold text-gray-400 uppercase tracking-widest">{t("student.dashboard.status")}</th>
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-gray-50">
                                         {paymentsData.slice(0, 5).map((payment) => (
                                             <tr key={payment.id} className="hover:bg-gray-50/50 transition-colors">
                                                 <td className="px-6 py-4 font-bold text-gray-900">{payment.chapterTitle}</td>
-                                                <td className="px-6 py-4 font-black text-primary-600">৳{payment.amount}</td>
+                                                <td className="px-6 py-4 font-bold text-primary-600">৳{payment.amount}</td>
                                                 <td className="px-6 py-4 font-mono text-xs text-gray-500">{payment.transactionId}</td>
                                                 <td className="px-6 py-4 text-sm font-bold">
                                                     <span className={`flex items-center gap-1.5 ${payment.status === PaymentStatus.VERIFIED ? 'text-green-600' :

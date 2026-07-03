@@ -14,18 +14,18 @@ export default function Hero() {
                     className="w-full h-full object-contain"
                 />
             </div>
-            <h1 className="text-3xl md:text-4xl font-semibold mb-6 tracking-tight">
+            <h1 className="font-serif text-4xl md:text-5xl font-medium mb-6 tracking-tight">
                 {t("home.hero.title")}
             </h1>
-            <p className="text-xl md:text-2xl mb-10 text-white/90 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl mb-10 text-white/85 max-w-2xl mx-auto leading-relaxed">
                 {t("home.hero.subtitle")}
             </p>
             <div className="flex justify-center space-x-4">
                 <Link href="/classes" className="px-6 py-3 bg-white text-primary-500 rounded-lg font-semibold hover:bg-gray-100 transition inline-block">
                     {t("home.hero.startLearning")}
                 </Link>
-                <Link href="/classes" className="px-6 py-3 border border-white rounded-lg font-semibold hover:bg-white hover:text-primary-500 transition inline-block">
-                    {t("home.hero.exploreClasses")}
+                <Link href="/shop" className="px-6 py-3 border border-white rounded-lg font-semibold hover:bg-white hover:text-primary-500 transition inline-block">
+                    {t("home.hero.studyMaterials")}
                 </Link>
             </div>
         </section>

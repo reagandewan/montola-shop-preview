@@ -8,7 +8,7 @@ import Select from "@/components/ui/Select";
 import Button from "@/components/ui/Button";
 import { PRODUCT_TYPE_META } from "@/lib/shopMeta";
 import { createProduct, updateProduct } from "@/lib/shop";
-import type { ShopProductCard, ShopLevel } from "@/types/shop";
+import type { ShopProductCard, ShopLevel, ShopClass } from "@/types/shop";
 
 interface Option { id: number; label: string }
 
@@ -18,13 +18,14 @@ interface Props {
     onSaved: () => void;
     product?: ShopProductCard | null;
     levels: ShopLevel[];
+    classes: ShopClass[];
     subjects: Option[];
     chapters: Option[];
 }
 
 const TYPE_OPTIONS = Object.entries(PRODUCT_TYPE_META).map(([value, m]) => ({ value, label: m.label }));
 
-export default function ShopProductForm({ isOpen, onClose, onSaved, product, levels, subjects, chapters }: Props) {
+export default function ShopProductForm({ isOpen, onClose, onSaved, product, levels, classes, subjects, chapters }: Props) {
     const editing = !!product;
     const [f, setF] = useState({
         title: product?.title ?? "",
@@ -33,6 +34,7 @@ export default function ShopProductForm({ isOpen, onClose, onSaved, product, lev
         format: product?.format ?? "PDF",
         price: String(product?.price ?? ""),
         levelId: product?.levelId ? String(product.levelId) : "",
+        classId: product?.classId ? String(product.classId) : "",
         subjectId: product?.subjectId ? String(product.subjectId) : "",
         chapterId: product?.chapterId ? String(product.chapterId) : "",
         status: product?.status ?? "DRAFT",
@@ -57,6 +59,7 @@ export default function ShopProductForm({ isOpen, onClose, onSaved, product, lev
             format: f.format,
             price: Number(f.price) || 0,
             levelId: f.levelId ? Number(f.levelId) : null,
+            classId: f.classId ? Number(f.classId) : null,
             subjectId: f.subjectId ? Number(f.subjectId) : null,
             chapterId: f.chapterId ? Number(f.chapterId) : null,
             status: f.status,
@@ -101,9 +104,18 @@ export default function ShopProductForm({ isOpen, onClose, onSaved, product, lev
                         options={[{ value: "PDF", label: "PDF" }, { value: "INTERACTIVE", label: "Interactive" }]} />
                 </div>
 
-                <div className="grid grid-cols-3 gap-4">
-                    <Select label="Level" value={f.levelId} onChange={(e) => set("levelId", e.target.value)}
+                <div className="grid grid-cols-2 gap-4">
+                    <Select label="Level" value={f.levelId} onChange={(e) => { set("levelId", e.target.value); set("classId", ""); }}
                         options={[{ value: "", label: "— none —" }, ...levels.map((l) => ({ value: String(l.id), label: l.name }))]} />
+                    <Select label="Class" value={f.classId} onChange={(e) => set("classId", e.target.value)}
+                        options={[
+                            { value: "", label: "— none (level-wide) —" },
+                            ...(f.levelId ? classes.filter((c) => c.levelId === Number(f.levelId)) : classes)
+                                .map((c) => ({ value: String(c.id), label: c.name })),
+                        ]} />
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
                     <Select label="Subject" value={f.subjectId} onChange={(e) => set("subjectId", e.target.value)}
                         options={[{ value: "", label: "— none —" }, ...subjects.map((s) => ({ value: String(s.id), label: s.label }))]} />
                     <Select label="Chapter" value={f.chapterId} onChange={(e) => set("chapterId", e.target.value)}

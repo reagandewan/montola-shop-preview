@@ -239,7 +239,7 @@ export default function ChapterPublicPage() {
                             <span className="text-gray-900 font-bold truncate max-w-[140px]">{chapter.title}</span>
                         </nav>
 
-                        <h1 className="text-3xl font-black text-gray-900 mb-6 leading-tight tracking-tight">
+                        <h1 className="text-3xl font-bold text-gray-900 mb-6 leading-tight tracking-tight">
                             {chapter.title}
                         </h1>
 
@@ -278,7 +278,7 @@ export default function ChapterPublicPage() {
                                 <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1 font-sans">
                                     {chapter.free ? t("chapterPublic.status") : t("chapterPublic.price")}
                                 </p>
-                                <p className="text-2xl font-black text-primary-600">
+                                <p className="text-2xl font-bold text-primary-600">
                                     {chapter.free ? (
                                         <span className="text-green-600">{t("home.free.badge")}</span>
                                     ) : (
@@ -293,7 +293,7 @@ export default function ChapterPublicPage() {
                                 <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
                                     <div className="flex justify-between items-center mb-2">
                                         <span className="text-sm font-bold text-gray-700">{t("chapterPublic.progress")}</span>
-                                        <span className="text-sm font-black text-primary-600">{Math.round(progress.progressPercentage)}%</span>
+                                        <span className="text-sm font-bold text-primary-600">{Math.round(progress.progressPercentage)}%</span>
                                     </div>
                                     <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
                                         <div
@@ -304,7 +304,7 @@ export default function ChapterPublicPage() {
                                 </div>
                                 <Link
                                     href={`/student/chapters/${chapter.id}`}
-                                    className="block w-full text-center py-4 bg-primary-600 text-white rounded-2xl font-black text-xl shadow-xl shadow-primary-200 hover:bg-primary-700 transition transform hover:-translate-y-1"
+                                    className="block w-full text-center py-4 bg-primary-600 text-white rounded-2xl font-bold text-xl shadow-xl shadow-primary-200 hover:bg-primary-700 transition transform hover:-translate-y-1"
                                 >
                                     {t("chapterPublic.continueLearning")}
                                 </Link>
@@ -330,7 +330,7 @@ export default function ChapterPublicPage() {
                                 <button
                                     onClick={handleEnroll}
                                     disabled={enrolling}
-                                    className={`w-full py-5 rounded-2xl font-black text-xl shadow-2xl transition-all duration-300 flex items-center justify-center gap-3 ${isHighlighting ? "scale-105 ring-4 ring-primary-300 shadow-primary-200" : ""
+                                    className={`w-full py-5 rounded-2xl font-bold text-xl shadow-2xl transition-all duration-300 flex items-center justify-center gap-3 ${isHighlighting ? "scale-105 ring-4 ring-primary-300 shadow-primary-200" : ""
                                         } ${chapter.free
                                             ? "bg-green-600 text-white hover:bg-green-700 shadow-green-100"
                                             : "bg-primary-600 text-white hover:bg-primary-700 shadow-primary-100"
@@ -371,7 +371,7 @@ export default function ChapterPublicPage() {
             {structure && (
                 <div className="max-w-5xl mx-auto mt-12 bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                     <div className="bg-gray-50 px-8 py-6 border-b border-gray-100">
-                        <h3 className="text-2xl font-black text-gray-900 tracking-tight">Syllabus</h3>
+                        <h3 className="text-2xl font-bold text-gray-900 tracking-tight">Syllabus</h3>
                         <p className="text-sm text-gray-500 font-medium">{structure.topics?.length || 0} Topics • {structure.topics?.reduce((acc: number, t: any) => acc + (t.contentItems?.length || 0), 0)} Items</p>
                     </div>
                     <div className="divide-y divide-gray-100">
@@ -385,7 +385,7 @@ export default function ChapterPublicPage() {
                                         <h4 className="font-bold text-gray-800 text-lg group-hover:text-primary-600 transition-colors">{topic.title}</h4>
                                     </div>
                                     <div className="flex items-center gap-4">
-                                        <span className="text-xs font-black text-gray-400 uppercase tracking-widest">{topic.contentItems?.length || 0} items</span>
+                                        <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">{topic.contentItems?.length || 0} items</span>
                                         {expandedTopics.has(topic.id) ? <FaChevronUp className="text-gray-300" /> : <FaChevronDown className="text-gray-300" />}
                                     </div>
                                 </button>
@@ -404,7 +404,7 @@ export default function ChapterPublicPage() {
                                                     </div>
                                                     <div className="text-left">
                                                         <p className="font-bold text-gray-700 text-sm group-hover:text-primary-600 transition-colors">{item.title}</p>
-                                                        <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">{item.type}</p>
+                                                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{item.type}</p>
                                                     </div>
                                                 </div>
                                                 <FaLock className="text-gray-200 group-hover:text-primary-200 transition-colors" size={12} />

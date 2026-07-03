@@ -76,7 +76,7 @@ export default function SubjectPage() {
                 </header>
 
                 <div className="flex items-center gap-4 mb-6 px-2">
-                    <h2 className="text-2xl font-black text-gray-900 tracking-tight">{t("classes.chapters")}</h2>
+                    <h2 className="text-2xl font-bold text-gray-900 tracking-tight">{t("classes.chapters")}</h2>
                     <div className="flex-grow h-px bg-gray-200"></div>
                 </div>
 

@@ -43,7 +43,9 @@
     "subjectContentError": "Failed to load subject content.",
     "subjectNotFound": "Subject not found",
     "noChapters": "No chapters available yet.",
-    "noChaptersSub": "We're still preparing the chapters for this subject."
+    "noChaptersSub": "We're still preparing the chapters for this subject.",
+    "freeInClass": "Try it free — chapters in this class",
+    "startFree": "Start free"
   },
   "featuredChapters": {
     "title": "Featured Chapters",
@@ -52,7 +54,10 @@
     "loading": "Collecting our best chapters...",
     "noChapters": "No featured chapters yet",
     "noChaptersSub": "Check back soon for our top picks!",
-    "error": "Failed to load featured chapters."
+    "error": "Failed to load featured chapters.",
+    "allLevels": "All levels",
+    "comingSoon": "Featured chapters for this level are coming soon.",
+    "pickLevel": "Find featured chapters for your level"
   },
   "freeChapters": {
     "title": "Free Chapters",
@@ -64,7 +69,10 @@
     "error": "Failed to load free chapters.",
     "startLearning": "Start Learning",
     "enrollNow": "Enroll Now",
-    "freeAccess": "Free Access"
+    "freeAccess": "Free Access",
+    "allLevels": "All levels",
+    "comingSoon": "Free chapters for this level are coming soon.",
+    "pickLevel": "Find free chapters for your level"
   },
   "chapterPublic": {
     "loading": "Loading chapter details...",
@@ -93,7 +101,8 @@
     "paymentFailed": "Failed to submit payment details.",
     "enrollToAccess": "You need to enroll to access this content.",
     "buyToAccess": "You need to purchase this chapter to access this content.",
-    "whatYouWillLearn": "What you'll learn",    "fallbackDescription": "Master this topic with our expert-led chapter tutorials, exclusive resources, and interactive quizzes.",
+    "whatYouWillLearn": "What you'll learn",
+    "fallbackDescription": "Master this topic with our expert-led chapter tutorials, exclusive resources, and interactive quizzes.",
     "noGeneral": "General",
     "features": {
       "live": "Live classes",
@@ -102,7 +111,8 @@
       "notice": "Exclusive notice board feature",
       "exams": "World class exam system"
     }
-  },  "paymentModal": {
+  },
+  "paymentModal": {
     "title": "Complete Your Payment",
     "chapterHeader": "Chapter",
     "totalAmount": "Total Amount:",
@@ -356,7 +366,8 @@
       "title": "Redefining how true learning happens.",
       "subtitle": "In a world that rewards memorized answers, Montola School builds curious minds. We don't just teach the How — we teach every student to ask Why.",
       "startLearning": "Start Learning",
-      "exploreClasses": "Explore Classes"
+      "exploreClasses": "Explore Classes",
+      "studyMaterials": "Study Materials"
     },
     "featured": {
       "title": "Featured Chapters",
@@ -373,7 +384,7 @@
     },
     "classes": {
       "title": "Available Classes",
-      "subtitle": "Select a Class you want to explore",
+      "subtitle": "Select your class to explore its subjects and chapters. Every class includes free chapters — try them first, judge our teaching, then decide.",
       "loading": "Arranging our class catalog..."
     },
     "valueProps": {
@@ -412,5 +423,33 @@
         }
       }
     }
+  },
+  "notices": {
+    "label": "Notice",
+    "viewMore": "View more",
+    "type": {
+      "INFO": "Info",
+      "IMPORTANT": "Important",
+      "URGENT": "Urgent"
+    }
+  },
+  "whatsNew": {
+    "badge": "What's new",
+    "title": "Latest chapters & materials",
+    "new": "New",
+    "kindChapter": "Chapter",
+    "kindProduct": "Shop",
+    "free": "Free"
+  },
+  "shopHero": {
+    "badge": "Montola shop",
+    "title": "Study materials made for you to score higher in the exam.",
+    "subtitle": "Exam-ready notes, board analysis, solved questions and practice sheets — organised by class, subject and chapter, so you find exactly what you need.",
+    "searchPlaceholder": "Search notes, worksheets, class 8…",
+    "search": "Search",
+    "browseAll": "Browse all materials",
+    "trust1": "Preview free before you buy",
+    "trust2": "Instant online access",
+    "trust3": "Pay with bKash / Nagad"
   }
 }

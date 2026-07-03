@@ -1,6 +1,7 @@
 import api from "./api";
 import {
     ShopLevel,
+    ShopClass,
     ShopProductCard,
     ShopProductDetail,
     ShopProductContent,
@@ -13,6 +14,11 @@ import {
 
 export const getLevels = async () => {
     const res = await api.get<ShopLevel[]>("/v1/shop/levels");
+    return res.data;
+};
+
+export const getShopClasses = async (levelId?: number) => {
+    const res = await api.get<ShopClass[]>("/v1/shop/classes", { params: levelId ? { levelId } : {} });
     return res.data;
 };
 

@@ -92,7 +92,7 @@ export default function Navbar() {
             return (
                 <div className="px-4 py-2 bg-gray-50 text-gray-400 rounded-lg flex items-center gap-2 border border-gray-100">
                     <LoadingSpinner size="sm" />
-                    <span className="text-[10px] font-black uppercase tracking-widest">Verifying</span>
+                    <span className="text-[10px] font-bold uppercase tracking-widest">Verifying</span>
                 </div>
             );
         }
@@ -112,7 +112,7 @@ export default function Navbar() {
                                     className="w-full h-full object-cover"
                                 />
                             ) : (
-                                <div className="w-full h-full flex items-center justify-center font-black">
+                                <div className="w-full h-full flex items-center justify-center font-bold">
                                     {getInitials(user.fullName)}
                                 </div>
                             )}
@@ -127,7 +127,7 @@ export default function Navbar() {
 
                             <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
                                 <div className="px-4 py-2 border-bottom border-gray-100 mb-1">
-                                    <p className="text-xs font-black text-gray-400 uppercase tracking-widest">Signed in as</p>
+                                    <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Signed in as</p>
                                     <p className="text-sm font-bold text-gray-900 truncate">{user.email}</p>
                                 </div>
                                 <Link
@@ -190,7 +190,7 @@ export default function Navbar() {
             return (
                 <div className="w-full px-4 py-3 bg-gray-50 text-gray-400 rounded-lg flex items-center justify-center gap-2 border border-gray-100">
                     <LoadingSpinner size="sm" />
-                    <span className="text-[10px] font-black uppercase tracking-widest">Verifying Account</span>
+                    <span className="text-[10px] font-bold uppercase tracking-widest">Verifying Account</span>
                 </div>
             );
         }
@@ -199,7 +199,7 @@ export default function Navbar() {
             return (
                 <div className="space-y-3">
                     <div className="flex items-center gap-3 px-2 py-3 bg-gray-50 rounded-xl mb-3">
-                        <div className="w-12 h-12 rounded-full bg-primary-600 flex items-center justify-center text-white text-lg font-black shrink-0 relative overflow-hidden">
+                        <div className="w-12 h-12 rounded-full bg-primary-600 flex items-center justify-center text-white text-lg font-bold shrink-0 relative overflow-hidden">
                             {user.hasProfilePicture && avatarUrl ? (
                                 <img
                                     src={avatarUrl}
@@ -279,7 +279,7 @@ export default function Navbar() {
                         alt="Montola School Logo"
                         className="w-10 h-10 rounded-lg object-cover shadow-sm border border-gray-100"
                     />
-                    <span className="text-2xl font-black text-primary-600 tracking-tight hidden sm:block">
+                    <span className="text-2xl font-bold text-primary-600 tracking-tight hidden sm:block">
                         Montola School
                     </span>
                 </Link>

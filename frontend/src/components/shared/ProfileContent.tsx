@@ -135,7 +135,7 @@ export default function ProfileContent({ className = "" }: ProfileContentProps) 
                     <div className="md:col-span-1">
                         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col items-center">
                             <div className="relative group">
-                                <div className="w-32 h-32 rounded-full bg-primary-600 flex items-center justify-center text-white text-4xl font-black overflow-hidden relative border-4 border-white shadow-md">
+                                <div className="w-32 h-32 rounded-full bg-primary-600 flex items-center justify-center text-white text-4xl font-bold overflow-hidden relative border-4 border-white shadow-md">
                                     {(user.hasProfilePicture && avatarUrl) ? (
                                         <Image
                                             src={avatarUrl}
@@ -174,7 +174,7 @@ export default function ProfileContent({ className = "" }: ProfileContentProps) 
                                 <p className="text-gray-500 text-sm mt-1">{user.email}</p>
                                 <div className="mt-4 flex flex-wrap justify-center gap-2">
                                     {user.roles.map(role => (
-                                        <span key={role} className="px-3 py-1 bg-primary-50 text-primary-600 text-[10px] font-black rounded-full uppercase tracking-tighter">
+                                        <span key={role} className="px-3 py-1 bg-primary-50 text-primary-600 text-[10px] font-bold rounded-full uppercase tracking-tight">
                                             {t(`roles.${role.toLowerCase()}`)}
                                         </span>
                                     ))}
@@ -266,22 +266,22 @@ export default function ProfileContent({ className = "" }: ProfileContentProps) 
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                 <div>
-                                    <p className="text-xs font-black text-gray-400 uppercase tracking-widest mb-1">{t("student.profile.fullName")}</p>
+                                    <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">{t("student.profile.fullName")}</p>
                                     <p className="text-gray-900 font-bold bg-gray-50 px-4 py-2 rounded-lg">{user.fullName}</p>
                                 </div>
                                 <div>
-                                    <p className="text-xs font-black text-gray-400 uppercase tracking-widest mb-1">{t("student.profile.emailAddress")}</p>
+                                    <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">{t("student.profile.emailAddress")}</p>
                                     <p className="text-gray-900 font-bold bg-gray-50 px-4 py-2 rounded-lg">{user.email}</p>
                                 </div>
                                 {user.phone && (
                                     <div>
-                                        <p className="text-xs font-black text-gray-400 uppercase tracking-widest mb-1">{t("student.profile.phoneNumber")}</p>
+                                        <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">{t("student.profile.phoneNumber")}</p>
                                         <p className="text-gray-900 font-bold bg-gray-50 px-4 py-2 rounded-lg">{user.phone}</p>
                                     </div>
                                 )}
                                 {user.createdAt && (
                                     <div>
-                                        <p className="text-xs font-black text-gray-400 uppercase tracking-widest mb-1">{t("student.profile.memberSince")}</p>
+                                        <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">{t("student.profile.memberSince")}</p>
                                         <p className="text-gray-900 font-bold bg-gray-50 px-4 py-2 rounded-lg">
                                             {new Date(user.createdAt).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
                                         </p>

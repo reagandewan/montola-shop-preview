@@ -26,6 +26,7 @@ const config: Config = {
             fontFamily: {
                 sans: ["var(--font-poppins)", "ui-sans-serif", "system-ui"],
                 heading: ["var(--font-poppins)", "ui-sans-serif", "system-ui"],
+                serif: ["var(--font-lora)", "Georgia", "serif"],
             },
         },
     },

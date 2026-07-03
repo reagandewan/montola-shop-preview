@@ -81,10 +81,10 @@ export default function PublicChapterGrid({ chapters, enrollmentMap: externalEnr
                             {enrollmentMap.has(chapter.id) ? (
                                 <div className="space-y-3">
                                     <div className="flex items-center justify-between">
-                                        <span className="text-[10px] font-black text-green-600 uppercase tracking-widest">
+                                        <span className="text-[10px] font-bold text-green-600 uppercase tracking-widest">
                                             {Math.round(enrollmentMap.get(chapter.id) || 0)}% COMPLETED
                                         </span>
-                                        <span className="text-[10px] font-black text-white bg-green-600 px-2 py-1 rounded uppercase tracking-tighter shadow-sm">
+                                        <span className="text-[10px] font-bold text-white bg-green-600 px-2 py-1 rounded uppercase tracking-tight shadow-sm">
                                             {t("student.dashboard.resume")}
                                         </span>
                                     </div>
@@ -97,7 +97,7 @@ export default function PublicChapterGrid({ chapters, enrollmentMap: externalEnr
                                 </div>
                             ) : (
                                 <div className="flex items-center justify-between pt-2">
-                                    <span className="text-[10px] font-black text-primary-600 uppercase tracking-widest">
+                                    <span className="text-[10px] font-bold text-primary-600 uppercase tracking-widest">
                                         {t("chapterPublic.preview")}
                                     </span>
                                     <span className="text-primary-600 transform group-hover:translate-x-1 transition-transform">

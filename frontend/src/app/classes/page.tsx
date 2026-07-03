@@ -74,7 +74,7 @@ export default function ClassesPage() {
                                     <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors duration-500" />
                                 </div>
                                 <div className="p-8 flex flex-col flex-grow">
-                                    <h2 className="text-2xl font-black text-gray-900 mb-3 group-hover:text-primary-600 transition-colors leading-tight uppercase tracking-tight">
+                                    <h2 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors leading-tight uppercase tracking-tight">
                                         {cls.name}
                                     </h2>
 
@@ -83,7 +83,7 @@ export default function ClassesPage() {
                                     </p>
 
                                     <div className="flex items-center justify-between mt-auto pt-6 border-t border-gray-50">
-                                        <div className="flex items-center gap-2 text-primary-600 font-black text-xs uppercase tracking-widest group-hover:gap-3 transition-all duration-300">
+                                        <div className="flex items-center gap-2 text-primary-600 font-bold text-xs uppercase tracking-widest group-hover:gap-3 transition-all duration-300">
                                             {t("classes.exploreSubjects")} <FaChevronRight size={12} />
                                         </div>
                                         <div className="p-2 bg-primary-50 rounded-lg text-primary-600 group-hover:bg-primary-600 group-hover:text-white transition-colors">

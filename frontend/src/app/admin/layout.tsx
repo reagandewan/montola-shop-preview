@@ -108,7 +108,7 @@ export default function AdminLayout({
                                     className="flex items-center gap-2 p-1 rounded-full hover:bg-gray-100 transition-colors border border-gray-100 pr-3"
                                 >
                                     <div className="w-8 h-8 rounded-full bg-primary-600 flex items-center justify-center text-white overflow-hidden relative">
-                                        <div className="w-full h-full flex items-center justify-center font-black text-xs">
+                                        <div className="w-full h-full flex items-center justify-center font-bold text-xs">
                                             {user ? getInitials(user.fullName) : "??"}
                                         </div>
                                     </div>
@@ -125,7 +125,7 @@ export default function AdminLayout({
 
                                         <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
                                             <div className="px-4 py-2 border-bottom border-gray-100 mb-1">
-                                                <p className="text-xs font-black text-gray-400 uppercase tracking-widest">Signed in as</p>
+                                                <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">Signed in as</p>
                                                 <p className="text-sm font-bold text-gray-900 truncate">{user?.email}</p>
                                             </div>
                                             <Link

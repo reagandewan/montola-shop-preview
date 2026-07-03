@@ -63,13 +63,13 @@ export default function ClassesListSection() {
                         </div>
                         <div className="p-6 flex flex-col flex-grow text-center">
                             <h3 className="text-xl font-bold mb-1 group-hover:text-primary-600 transition line-clamp-1 tracking-tight">{c.name}</h3>
-                            <p className="text-gray-400 text-[10px] font-black tracking-widest uppercase mb-4">Montola School</p>
+                            <p className="text-gray-400 text-[10px] font-bold tracking-widest uppercase mb-4">Montola School</p>
                             <p className="text-gray-600 mb-6 line-clamp-2 text-sm leading-relaxed">
                                 {c.description || t("classes.fallbackDesc")}
                             </p>
                             <div className="mt-auto">
                                 <span
-                                    className="block w-full py-3 px-4 border-2 border-primary-600 text-primary-600 rounded-lg font-black text-xs tracking-widest group-hover:bg-primary-600 group-hover:text-white transition-all transform group-hover:-translate-y-1 text-center"
+                                    className="block w-full py-3 px-4 border-2 border-primary-600 text-primary-600 rounded-lg font-bold text-xs tracking-widest group-hover:bg-primary-600 group-hover:text-white transition-all transform group-hover:-translate-y-1 text-center"
                                 >
                                     VIEW CLASS
                                 </span>

@@ -11,6 +11,7 @@ const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const db = require("./data");
 const { registerShop } = require("./shopRoutes");
+const { registerNotices } = require("./noticesRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -774,6 +775,7 @@ function getUserFromReq(req) {
   }
 }
 registerShop(app, { auth, userById, chapterById, subjectById, classById, isAdminOrManager, getUserFromReq });
+registerNotices(app, { auth });
 
 // ----------------------------------------------------------------------------
 // Fallback

@@ -12,13 +12,25 @@ import ChapterPlaceholder from "@/components/ChapterPlaceholder";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import { useI18n } from "@/contexts/I18nProvider";
 
+// Same level structure as the shop & free-chapters: JSC splits into classes.
+const LEVELS: { key: string; classes: number[]; split: boolean }[] = [
+    { key: "JSC", classes: [6, 7, 8], split: true },
+    { key: "SSC", classes: [9, 10], split: false },
+    { key: "HSC", classes: [11, 12], split: false },
+];
+
+const classNum = (name?: string | null) => parseInt((name || "").replace(/\D/g, ""), 10);
+const levelOf = (name?: string | null): string | null => {
+    const n = classNum(name);
+    if (n >= 6 && n <= 8) return "JSC";
+    if (n >= 9 && n <= 10) return "SSC";
+    if (n >= 11 && n <= 12) return "HSC";
+    return null;
+};
+
 function ChapterImage({ chapter }: { chapter: FeaturedChapterResponseDto }) {
     const [imageError, setImageError] = useState(false);
-
-    if (imageError) {
-        return <ChapterPlaceholder title={chapter.title} subjectName={chapter.subjectName} />;
-    }
-
+    if (imageError) return <ChapterPlaceholder title={chapter.title} subjectName={chapter.subjectName} />;
     return (
         <Image
             src={`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/api'}/v1/chapters/${chapter.chapterId || chapter.id}/cover-image`}
@@ -31,6 +43,52 @@ function ChapterImage({ chapter }: { chapter: FeaturedChapterResponseDto }) {
     );
 }
 
+function ChapterCard({ c, progress, t }: { c: FeaturedChapterResponseDto; progress?: number; t: (k: string) => string }) {
+    const enrolled = progress !== undefined;
+    return (
+        <Link
+            href={enrolled ? `/student/chapters/${c.chapterId}` : `/chapters/${c.chapterId}`}
+            className="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col"
+        >
+            <div className="aspect-video relative overflow-hidden bg-gray-100">
+                <ChapterImage chapter={c} />
+                <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors" />
+            </div>
+            <div className="p-6 flex flex-col flex-grow">
+                <div className="flex items-center gap-2 mb-3">
+                    <span className="text-[10px] font-bold tracking-widest text-primary-600 uppercase bg-primary-50 px-2 py-1 rounded">
+                        {c.subjectName} {c.className && `[${c.className}]`}
+                    </span>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors leading-tight tracking-tight">{c.title}</h3>
+                <p className="text-gray-600 mb-5 line-clamp-2 text-sm leading-relaxed">{c.description}</p>
+
+                {enrolled && (
+                    <div className="flex items-center justify-between mb-5">
+                        <div className="flex-grow bg-gray-100 rounded-full h-1.5 mr-3">
+                            <div className="bg-green-500 h-1.5 rounded-full transition-all duration-500" style={{ width: `${progress}%` }} />
+                        </div>
+                        <span className="text-[10px] font-bold text-green-600 uppercase tracking-widest">{Math.round(progress || 0)}% {t("student.dashboard.finished")}</span>
+                    </div>
+                )}
+
+                <div className="mt-auto pt-5 border-t border-gray-50 flex items-center justify-between">
+                    <p className="text-xl font-bold text-primary-600">{c.free ? t("home.free.badge") : `৳${c.price}`}</p>
+                    {enrolled ? (
+                        <span className="inline-flex items-center gap-2 bg-green-600 text-white px-5 py-2.5 rounded-xl font-bold text-sm group-hover:bg-green-700 transition">
+                            <FaPlay size={10} /> {t("student.dashboard.resume")}
+                        </span>
+                    ) : (
+                        <span className="inline-flex items-center gap-2 bg-primary-600 text-white px-5 py-2.5 rounded-xl font-bold text-sm group-hover:bg-primary-700 transition">
+                            {t("home.featured.preview")} <FaChevronRight size={12} />
+                        </span>
+                    )}
+                </div>
+            </div>
+        </Link>
+    );
+}
+
 export default function FeaturedChaptersPage() {
     const { t } = useI18n();
     const { isLoggedIn, user } = useAuth();
@@ -38,6 +96,7 @@ export default function FeaturedChaptersPage() {
     const [enrollmentMap, setEnrollmentMap] = useState<Map<number, number>>(new Map());
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+    const [activeLevel, setActiveLevel] = useState<string>("ALL");
 
     const isStudent = user?.roles?.includes("STUDENT");
 
@@ -48,10 +107,9 @@ export default function FeaturedChaptersPage() {
                     getFeaturedChapters(),
                     (isLoggedIn && isStudent) ? getMyChaptersProgress().catch(() => []) : Promise.resolve([])
                 ]);
-
                 setChapters(data);
                 if (progress && progress.length > 0) {
-                    const emap = new Map();
+                    const emap = new Map<number, number>();
                     progress.forEach(p => emap.set(p.chapterId, p.progressPercentage));
                     setEnrollmentMap(emap);
                 }
@@ -73,83 +131,79 @@ export default function FeaturedChaptersPage() {
         );
     }
 
+    const prog = (id: number) => enrollmentMap.has(id) ? enrollmentMap.get(id) : undefined;
+    const visibleLevels = LEVELS.filter((l) => activeLevel === "ALL" || activeLevel === l.key);
+
     return (
         <main className="min-h-screen bg-gray-50 pt-24 pb-16 px-6">
             <div className="max-w-6xl mx-auto">
-                <header className="mb-12 text-center">
+                <header className="mb-8 text-center">
                     <div className="inline-flex items-center gap-2 bg-yellow-100 text-yellow-700 px-4 py-1.5 rounded-full text-sm font-bold mb-4">
                         <FaStar /> {t("featuredChapters.badge")}
                     </div>
-                    <h1 className="text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">{t("featuredChapters.title")}</h1>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                        {t("featuredChapters.subtitle")}
-                    </p>
+                    <h1 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">{t("featuredChapters.title")}</h1>
+                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">{t("featuredChapters.pickLevel")}</p>
                 </header>
 
-                {error ? (
-                    <div className="bg-red-50 text-red-700 p-4 rounded-xl text-center max-w-md mx-auto border border-red-100">
-                        {error}
-                    </div>
-                ) : chapters.length === 0 ? (
-                    <div className="text-center py-20 bg-white rounded-2xl shadow-sm border border-gray-100">
-                        <FaStar className="w-16 h-16 text-gray-200 mx-auto mb-4" />
-                        <h3 className="text-xl font-bold text-gray-900 mb-2">{t("featuredChapters.noChapters")}</h3>
-                        <p className="text-gray-500">{t("featuredChapters.noChaptersSub")}</p>
-                    </div>
-                ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {chapters.map((c) => (
-                            <Link
-                                key={c.id}
-                                href={enrollmentMap.has(c.chapterId) ? `/student/chapters/${c.chapterId}` : `/chapters/${c.chapterId}`}
-                                className="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col"
-                            >
-                                <div className="aspect-video relative overflow-hidden bg-gray-100">
-                                    <ChapterImage chapter={c} />
-                                    <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors" />
-                                </div>
-                                <div className="p-8 flex flex-col flex-grow">
-                                    <div className="flex justify-between items-start mb-4">
-                                        <span className="text-[10px] font-black tracking-widest text-primary-600 uppercase bg-primary-50 px-2 py-1 rounded">
-                                            {c.subjectName} {c.className && `[${c.className}]`}
-                                        </span>
-                                    </div>
-                                    <h3 className="text-2xl font-black text-gray-900 mb-3 group-hover:text-primary-600 transition-colors leading-tight uppercase tracking-tight">{c.title}</h3>
-                                    <p className="text-gray-600 mb-6 line-clamp-3 text-sm leading-relaxed">{c.description}</p>
+                {/* Level filter */}
+                <div className="flex flex-wrap justify-center gap-2 mb-12">
+                    <button
+                        onClick={() => setActiveLevel("ALL")}
+                        className={`text-sm font-semibold px-4 py-2 rounded-full border transition ${activeLevel === "ALL" ? "bg-primary-600 text-white border-primary-600" : "bg-white border-gray-300 text-gray-600 hover:border-primary-400"}`}
+                    >
+                        {t("featuredChapters.allLevels")}
+                    </button>
+                    {LEVELS.map((l) => (
+                        <button
+                            key={l.key}
+                            onClick={() => setActiveLevel(l.key)}
+                            className={`text-sm font-semibold px-4 py-2 rounded-full border transition ${activeLevel === l.key ? "bg-primary-600 text-white border-primary-600" : "bg-white border-gray-300 text-gray-600 hover:border-primary-400"}`}
+                        >
+                            {l.key}
+                        </button>
+                    ))}
+                </div>
 
-                                    {enrollmentMap.has(c.chapterId) && (
-                                        <div className="flex items-center justify-between mb-6">
-                                            <div className="flex-grow bg-gray-100 rounded-full h-1.5 mr-3">
-                                                <div
-                                                    className="bg-green-500 h-1.5 rounded-full transition-all duration-500"
-                                                    style={{ width: `${enrollmentMap.get(c.chapterId)}%` }}
-                                                />
-                                            </div>
-                                            <span className="text-[10px] font-black text-green-600 uppercase tracking-widest">{Math.round(enrollmentMap.get(c.chapterId) || 0)}% {t("student.dashboard.finished")}</span>
+                {error ? (
+                    <div className="bg-red-50 text-red-700 p-4 rounded-xl text-center max-w-md mx-auto border border-red-100">{error}</div>
+                ) : (
+                    <div className="space-y-14">
+                        {visibleLevels.map((lvl) => {
+                            const lvlChapters = chapters.filter((c) => levelOf(c.className) === lvl.key);
+                            return (
+                                <section key={lvl.key}>
+                                    <div className="flex items-center gap-3 mb-6">
+                                        <span className="text-sm font-bold uppercase tracking-widest text-primary-700 bg-primary-50 px-3 py-1.5 rounded-full">{lvl.key}</span>
+                                        <span className="h-px flex-1 bg-gray-200" />
+                                    </div>
+
+                                    {lvlChapters.length === 0 ? (
+                                        <p className="text-gray-400 text-sm bg-white border border-dashed border-gray-200 rounded-xl px-6 py-8 text-center">
+                                            {t("featuredChapters.comingSoon")}
+                                        </p>
+                                    ) : lvl.split ? (
+                                        <div className="space-y-8">
+                                            {lvl.classes.map((cn) => {
+                                                const inClass = lvlChapters.filter((c) => classNum(c.className) === cn);
+                                                if (inClass.length === 0) return null;
+                                                return (
+                                                    <div key={cn}>
+                                                        <h3 className="font-bold text-gray-700 mb-4">Class {cn}</h3>
+                                                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                                            {inClass.map((c) => <ChapterCard key={c.id} c={c} progress={prog(c.chapterId)} t={t} />)}
+                                                        </div>
+                                                    </div>
+                                                );
+                                            })}
+                                        </div>
+                                    ) : (
+                                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                            {lvlChapters.map((c) => <ChapterCard key={c.id} c={c} progress={prog(c.chapterId)} t={t} />)}
                                         </div>
                                     )}
-
-                                    <div className="mt-auto pt-6 border-t border-gray-50 flex items-center justify-between">
-                                        <p className="text-2xl font-black text-primary-600">
-                                            {c.free ? t("home.free.badge") : `৳${c.price}`}
-                                        </p>
-                                        {enrollmentMap.has(c.chapterId) ? (
-                                            <span
-                                                className="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-2.5 rounded-xl font-black text-sm tracking-tight group-hover:bg-green-700 transition shadow-lg shadow-green-100"
-                                            >
-                                                <FaPlay size={10} /> {t("student.dashboard.resume")}
-                                            </span>
-                                        ) : (
-                                            <span
-                                                className="inline-flex items-center gap-2 bg-primary-600 text-white px-6 py-2.5 rounded-xl font-black text-sm tracking-tight group-hover:bg-primary-700 transition shadow-lg shadow-primary-100"
-                                            >
-                                                {t("home.featured.preview")} <FaChevronRight size={12} />
-                                            </span>
-                                        )}
-                                    </div>
-                                </div>
-                            </Link>
-                        ))}
+                                </section>
+                            );
+                        })}
                     </div>
                 )}
             </div>

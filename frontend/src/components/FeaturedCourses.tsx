@@ -89,14 +89,14 @@ export default function FeaturedCourses() {
                             <ChapterImage chapter={c} />
                             <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors" />
                             <div className="absolute top-3 right-3">
-                                <span className="px-2 py-1 bg-white/90 backdrop-blur-sm text-[10px] font-black text-primary-600 rounded shadow-sm">
+                                <span className="px-2 py-1 bg-white/90 backdrop-blur-sm text-[10px] font-bold text-primary-600 rounded shadow-sm">
                                     {t("home.featured.badge")}
                                 </span>
                             </div>
                         </div>
                         <div className="p-6 flex flex-col flex-grow">
                             <h3 className="text-xl font-bold mb-1 group-hover:text-primary-600 transition line-clamp-1">{c.title}</h3>
-                            <p className="text-gray-400 text-[10px] font-black tracking-widest uppercase mb-4">{c.subjectName} • {c.className}</p>
+                            <p className="text-gray-400 text-[10px] font-bold tracking-widest uppercase mb-4">{c.subjectName} • {c.className}</p>
                             <p className="text-gray-600 mb-6 line-clamp-2 text-sm leading-relaxed">{c.description}</p>
                             {enrollmentMap.has(c.chapterId) && (
                                 <div className="flex items-center justify-between mb-4">
@@ -106,26 +106,26 @@ export default function FeaturedCourses() {
                                             style={{ width: `${enrollmentMap.get(c.chapterId)}%` }}
                                         />
                                     </div>
-                                    <span className="text-[10px] font-black text-green-600">{Math.round(enrollmentMap.get(c.chapterId) || 0)}%</span>
+                                    <span className="text-[10px] font-bold text-green-600">{Math.round(enrollmentMap.get(c.chapterId) || 0)}%</span>
                                 </div>
                             )}
                             <div className="mt-auto flex items-center justify-between">
-                                <p className="text-xl font-black text-primary-600">
+                                <p className="text-xl font-bold text-primary-600">
                                     {c.free ? (
-                                        <span className="text-green-600 uppercase tracking-tighter">{t("home.free.badge")}</span>
+                                        <span className="text-green-600 uppercase tracking-tight">{t("home.free.badge")}</span>
                                     ) : (
                                         `৳${c.price}`
                                     )}
                                 </p>
                                 {enrollmentMap.has(c.chapterId) ? (
                                     <span
-                                        className="py-2.5 px-6 bg-green-600 text-white rounded-lg font-black text-xs tracking-widest group-hover:bg-green-700 transition shadow-lg shadow-green-100 flex items-center gap-2"
+                                        className="py-2.5 px-6 bg-green-600 text-white rounded-lg font-bold text-xs tracking-widest group-hover:bg-green-700 transition shadow-lg shadow-green-100 flex items-center gap-2"
                                     >
                                         <FaPlay size={10} /> {t("student.dashboard.resume")}
                                     </span>
                                 ) : (
                                     <span
-                                        className="py-2.5 px-6 bg-primary-600 text-white rounded-lg font-black text-xs tracking-widest group-hover:bg-primary-700 transition shadow-lg shadow-primary-100 text-center"
+                                        className="py-2.5 px-6 bg-primary-600 text-white rounded-lg font-bold text-xs tracking-widest group-hover:bg-primary-700 transition shadow-lg shadow-primary-100 text-center"
                                     >
                                         {t("home.featured.preview")}
                                     </span>

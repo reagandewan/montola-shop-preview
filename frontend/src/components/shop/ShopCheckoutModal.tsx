@@ -67,7 +67,7 @@ export default function ShopCheckoutModal({
                     <p className="text-lg font-bold text-primary-900">{title}</p>
                     <div className="mt-3 flex items-center justify-between">
                         <span className="text-sm text-gray-600">{t("paymentModal.totalAmount")}</span>
-                        <span className="text-xl font-black text-primary-600">৳ {amount}</span>
+                        <span className="text-xl font-bold text-primary-600">৳ {amount}</span>
                     </div>
                 </div>
 

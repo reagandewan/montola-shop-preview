@@ -87,7 +87,7 @@ export default function CourseSidebar({
                 <div className={`p-5 border-b border-gray-100 flex items-center justify-between ${isCollapsed ? 'flex-col gap-4' : ''}`}>
                     {!isCollapsed && (
                         <div className="flex-1 min-w-0">
-                            <Link href="/student/dashboard" className="text-[10px] font-black text-primary-600 hover:text-primary-700 mb-2 flex items-center gap-1 transition-colors tracking-widest uppercase">
+                            <Link href="/student/dashboard" className="text-[10px] font-bold text-primary-600 hover:text-primary-700 mb-2 flex items-center gap-1 transition-colors tracking-widest uppercase">
                                 <FiChevronLeft /> {t("student.sidebar.dashboard")}
                             </Link>
                             <h2 className="font-bold text-gray-900 leading-tight truncate" title={structure.title}>{structure.title}</h2>
@@ -118,7 +118,7 @@ export default function CourseSidebar({
                 {!isCollapsed && (
                     <div className="p-5 border-b border-gray-50 bg-gray-50/30">
                         <div className="space-y-2">
-                            <div className="flex items-center justify-between text-[10px] font-black text-gray-400 tracking-widest uppercase">
+                            <div className="flex items-center justify-between text-[10px] font-bold text-gray-400 tracking-widest uppercase">
                                 <span>{t("student.sidebar.chapterProgress")}</span>
                                 <span className="text-primary-600">
                                     {(overallProgress?.progressPercentage ?? 0).toFixed(0)}%

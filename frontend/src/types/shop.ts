@@ -21,6 +21,13 @@ export interface ShopLevel {
     orderIndex: number;
 }
 
+export interface ShopClass {
+    id: number;
+    name: string;
+    levelId: number;
+    orderIndex: number;
+}
+
 export interface ShopProductCard {
     id: number;
     title: string;
@@ -34,6 +41,8 @@ export interface ShopProductCard {
     downloadable: boolean;
     levelId: number | null;
     levelName: string | null;
+    classId: number | null;
+    className: string | null;
     subjectId: number | null;
     subjectName: string | null;
     chapterId: number | null;
@@ -81,6 +90,7 @@ export interface ShopPurchase {
 export interface ShopFilters {
     type?: ShopProductType;
     levelId?: number;
+    classId?: number;
     subjectId?: number;
     chapterId?: number;
     format?: ShopProductFormat;

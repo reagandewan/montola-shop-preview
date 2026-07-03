@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { getAdminProducts, deleteProduct, getLevels } from "@/lib/shop";
+import { getAdminProducts, deleteProduct, getLevels, getShopClasses } from "@/lib/shop";
 import { getAllSubjects, getAllChapters } from "@/lib/admin";
 import { PRODUCT_TYPE_META, formatTaka } from "@/lib/shopMeta";
-import type { ShopProductCard, ShopLevel } from "@/types/shop";
+import type { ShopProductCard, ShopLevel, ShopClass } from "@/types/shop";
 import ShopProductForm from "@/components/admin/ShopProductForm";
 
 interface Option { id: number; label: string }
@@ -13,6 +13,7 @@ interface Option { id: number; label: string }
 export default function AdminShopProductsPage() {
     const [products, setProducts] = useState<ShopProductCard[]>([]);
     const [levels, setLevels] = useState<ShopLevel[]>([]);
+    const [classes, setClasses] = useState<ShopClass[]>([]);
     const [subjects, setSubjects] = useState<Option[]>([]);
     const [chapters, setChapters] = useState<Option[]>([]);
     const [loading, setLoading] = useState(true);
@@ -27,6 +28,7 @@ export default function AdminShopProductsPage() {
     useEffect(() => {
         load();
         getLevels().then(setLevels).catch(() => {});
+        getShopClasses().then(setClasses).catch(() => {});
         getAllSubjects().then((r) => setSubjects(r.data.map((s: any) => ({ id: s.id, label: s.className ? `${s.name} · ${s.className}` : s.name })))).catch(() => {});
         getAllChapters().then((r) => setChapters(r.data.map((c: any) => ({ id: c.id, label: c.title })))).catch(() => {});
     }, []);
@@ -46,7 +48,7 @@ export default function AdminShopProductsPage() {
     };
 
     const scope = (p: ShopProductCard) =>
-        [p.levelName, p.subjectName, p.chapterTitle].filter(Boolean).join(" · ") || "—";
+        [p.levelName, p.className, p.subjectName, p.chapterTitle].filter(Boolean).join(" · ") || "—";
 
     return (
         <div className="p-6 md:p-8">
@@ -109,6 +111,7 @@ export default function AdminShopProductsPage() {
                     onSaved={load}
                     product={editing}
                     levels={levels}
+                    classes={classes}
                     subjects={subjects}
                     chapters={chapters}
                 />

@@ -3,11 +3,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { getClassPublicStructure } from "@/lib/public";
-import { ClassStructureResponseDto } from "@/types";
+import { getClassPublicStructure, getFreeChapters } from "@/lib/public";
+import { ClassStructureResponseDto, ChapterResponseDto } from "@/types";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import { useI18n } from "@/contexts/I18nProvider";
-import { FaBookOpen, FaChevronRight } from "react-icons/fa";
+import { FaBookOpen, FaChevronRight, FaPlay } from "react-icons/fa";
 
 export default function ClassPage() {
     const { t } = useI18n();
@@ -15,6 +15,7 @@ export default function ClassPage() {
     const id = params?.id ? Number(params.id) : null;
 
     const [structure, setStructure] = useState<ClassStructureResponseDto | null>(null);
+    const [freeChapters, setFreeChapters] = useState<ChapterResponseDto[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
 
@@ -34,6 +35,11 @@ export default function ClassPage() {
         };
 
         fetchStructure();
+
+        // Free chapters scoped to this class (strip hidden when none)
+        getFreeChapters()
+            .then((all) => setFreeChapters(all.filter((c) => c.classId === id)))
+            .catch(() => setFreeChapters([]));
     }, [id, t]);
 
     if (!id) return null;
@@ -69,6 +75,32 @@ export default function ClassPage() {
                     )}
                 </header>
 
+                {/* Free chapters in this class */}
+                {freeChapters.length > 0 && (
+                    <section className="mb-12 bg-primary-50/60 border border-primary-100 rounded-2xl p-6">
+                        <h2 className="text-lg font-bold text-primary-800 mb-4">
+                            {t("classes.freeInClass")}
+                        </h2>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                            {freeChapters.map((ch) => (
+                                <Link
+                                    key={ch.id}
+                                    href={`/chapters/${ch.id}`}
+                                    className="group bg-white rounded-xl border border-primary-100 p-4 flex items-center justify-between gap-3 hover:shadow-md hover:border-primary-300 transition"
+                                >
+                                    <div className="min-w-0">
+                                        <p className="font-semibold text-gray-900 truncate group-hover:text-primary-700 transition-colors">{ch.title}</p>
+                                        <p className="text-xs text-gray-500 mt-0.5">{ch.subjectName}</p>
+                                    </div>
+                                    <span className="shrink-0 inline-flex items-center gap-1.5 text-xs font-semibold text-primary-700 bg-primary-50 border border-primary-200 rounded-full px-3 py-1.5">
+                                        <FaPlay size={8} /> {t("classes.startFree")}
+                                    </span>
+                                </Link>
+                            ))}
+                        </div>
+                    </section>
+                )}
+
                 {structure.subjects.length === 0 ? (
                     <div className="text-center py-16 px-6 bg-white rounded-2xl shadow-sm border border-gray-100">
                         <FaBookOpen className="w-14 h-14 text-gray-200 mx-auto mb-4" />
@@ -90,12 +122,12 @@ export default function ClassPage() {
                                         <div className="p-3 bg-primary-50 rounded-xl text-primary-600 group-hover:bg-primary-600 group-hover:text-white transition-colors">
                                             <FaBookOpen size={22} />
                                         </div>
-                                        <span className="text-[10px] font-black text-gray-500 uppercase tracking-widest bg-gray-50 px-3 py-1.5 rounded-full">
+                                        <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest bg-gray-50 px-3 py-1.5 rounded-full">
                                             {chapterCount} {chapterCount === 1 ? t("classes.chapter") : t("classes.chapters")}
                                         </span>
                                     </div>
 
-                                    <h2 className="text-2xl font-black text-gray-900 mb-3 group-hover:text-primary-600 transition-colors leading-tight tracking-tight">
+                                    <h2 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors leading-tight tracking-tight">
                                         {subject.name}
                                     </h2>
                                     <p className="text-sm text-gray-600 line-clamp-3 leading-relaxed font-medium flex-grow">
@@ -103,7 +135,7 @@ export default function ClassPage() {
                                     </p>
 
                                     <div className="flex items-center justify-between mt-6 pt-5 border-t border-gray-50">
-                                        <span className="text-xs font-black text-primary-600 uppercase tracking-widest">
+                                        <span className="text-xs font-bold text-primary-600 uppercase tracking-widest">
                                             {t("classes.viewChapters")}
                                         </span>
                                         <FaChevronRight className="text-primary-600 transition-transform group-hover:translate-x-1" size={14} />

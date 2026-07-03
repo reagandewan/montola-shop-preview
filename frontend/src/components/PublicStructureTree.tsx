@@ -87,7 +87,7 @@ export default function PublicStructureTree({ structure }: Props) {
             {structure.subjects.map((subject) => (
                 <div key={subject.id}>
                     <div className="flex items-center gap-4 mb-6 px-2">
-                        <h3 className="text-2xl font-black text-gray-900 tracking-tight">{subject.name}</h3>
+                        <h3 className="text-2xl font-bold text-gray-900 tracking-tight">{subject.name}</h3>
                         <div className="flex-grow h-px bg-gray-200"></div>
                     </div>
                     
@@ -115,10 +115,10 @@ export default function PublicStructureTree({ structure }: Props) {
                                             {enrollmentMap.has(chapter.id) ? (
                                                 <div className="space-y-3">
                                                     <div className="flex items-center justify-between">
-                                                        <span className="text-[10px] font-black text-green-600 uppercase tracking-widest">
+                                                        <span className="text-[10px] font-bold text-green-600 uppercase tracking-widest">
                                                             {Math.round(enrollmentMap.get(chapter.id) || 0)}% COMPLETED
                                                         </span>
-                                                        <span className="text-[10px] font-black text-white bg-green-600 px-2 py-1 rounded uppercase tracking-tighter shadow-sm">
+                                                        <span className="text-[10px] font-bold text-white bg-green-600 px-2 py-1 rounded uppercase tracking-tight shadow-sm">
                                                             {t("student.dashboard.resume")}
                                                         </span>
                                                     </div>
@@ -131,7 +131,7 @@ export default function PublicStructureTree({ structure }: Props) {
                                                 </div>
                                             ) : (
                                                 <div className="flex items-center justify-between pt-2">
-                                                    <span className="text-[10px] font-black text-primary-600 uppercase tracking-widest">
+                                                    <span className="text-[10px] font-bold text-primary-600 uppercase tracking-widest">
                                                         {t("chapterPublic.preview")}
                                                     </span>
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-4 h-4 text-primary-600 transform group-hover:translate-x-1 transition-transform">

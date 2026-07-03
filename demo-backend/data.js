@@ -18,8 +18,13 @@ const users = [
 
 // ---- Course hierarchy: Class -> Subject -> Chapter -> Topic -> ContentItem --
 const classes = [
+  { id: 3, name: "Class 6",  description: "Junior secondary — sixth grade." },
+  { id: 4, name: "Class 7",  description: "Junior secondary — seventh grade." },
+  { id: 5, name: "Class 8",  description: "Junior secondary — JSC candidates." },
   { id: 1, name: "Class 9",  description: "Secondary level — ninth grade." },
   { id: 2, name: "Class 10", description: "Secondary level — SSC candidates." },
+  { id: 6, name: "Class 11", description: "Higher secondary — eleventh grade." },
+  { id: 7, name: "Class 12", description: "Higher secondary — HSC candidates." },
 ];
 
 const subjects = [
@@ -28,6 +33,17 @@ const subjects = [
   { id: 12, classId: 1, name: "English",     description: "Grammar and composition.", orderIndex: 2 },
   { id: 20, classId: 2, name: "Mathematics", description: "Trigonometry, algebra, statistics.", orderIndex: 0 },
   { id: 21, classId: 2, name: "Chemistry",   description: "Atoms, periodic table, reactions.", orderIndex: 1 },
+  { id: 30, classId: 3, name: "Mathematics", description: "Numbers, fractions and basic geometry.", orderIndex: 0 },
+  { id: 31, classId: 3, name: "Science",     description: "Living world, matter and energy.", orderIndex: 1 },
+  { id: 32, classId: 3, name: "English",     description: "Grammar, reading and writing.", orderIndex: 2 },
+  { id: 40, classId: 4, name: "Mathematics", description: "Ratio, proportion and algebra basics.", orderIndex: 0 },
+  { id: 41, classId: 4, name: "Science",     description: "Cells, heat and simple machines.", orderIndex: 1 },
+  { id: 42, classId: 4, name: "English",     description: "Tenses, comprehension and composition.", orderIndex: 2 },
+  { id: 50, classId: 5, name: "Science",     description: "Matter, force and the living world.", orderIndex: 0 },
+  { id: 51, classId: 5, name: "Mathematics", description: "Algebra, geometry and mensuration.", orderIndex: 1 },
+  { id: 52, classId: 5, name: "English",     description: "Grammar and writing skills.", orderIndex: 2 },
+  { id: 60, classId: 6, name: "Physics",     description: "Vectors, motion and mechanics.", orderIndex: 0 },
+  { id: 70, classId: 7, name: "Chemistry",   description: "Atomic structure and reactions.", orderIndex: 0 },
 ];
 
 // status: DRAFT | PUBLISHED | ARCHIVED
@@ -39,6 +55,29 @@ const chapters = [
   { id: 120, subjectId: 12, title: "Grammar Essentials",  description: "Tenses, articles and prepositions.",          status: "PUBLISHED", orderIndex: 0, videoId: "",            price: 0,   isFree: true,  createdBy: 2 },
   { id: 200, subjectId: 20, title: "Trigonometry",        description: "Ratios, identities and applications.",        status: "PUBLISHED", orderIndex: 0, videoId: "",            price: 700, isFree: false, createdBy: 1 },
   { id: 210, subjectId: 21, title: "The Periodic Table",  description: "Elements, groups and periods.",               status: "PUBLISHED", orderIndex: 0, videoId: "",            price: 0,   isFree: true,  createdBy: 2 },
+  { id: 300, subjectId: 30, title: "Fractions and Decimals",   description: "Understanding parts of a whole.",        status: "PUBLISHED", orderIndex: 0, videoId: "", price: 0, isFree: true, createdBy: 1 },
+  { id: 400, subjectId: 40, title: "Ratio and Proportion",     description: "Comparing quantities the smart way.",    status: "PUBLISHED", orderIndex: 0, videoId: "", price: 0, isFree: true, createdBy: 1 },
+  { id: 500, subjectId: 50, title: "Force and Motion (Intro)", description: "A first look at pushes and pulls.",      status: "PUBLISHED", orderIndex: 0, videoId: "", price: 0, isFree: true, createdBy: 1 },
+  { id: 600, subjectId: 60, title: "Vectors",                  description: "Magnitude and direction.",               status: "PUBLISHED", orderIndex: 0, videoId: "", price: 0, isFree: true, createdBy: 1 },
+  { id: 700, subjectId: 70, title: "Atomic Structure",         description: "Protons, neutrons and electrons.",       status: "PUBLISHED", orderIndex: 0, videoId: "", price: 0, isFree: true, createdBy: 1 },
+  // ===== Class 6 =====
+  { id: 301, subjectId: 30, title: "Geometry Basics",         description: "Points, lines, angles and shapes.",      status: "PUBLISHED", orderIndex: 1, videoId: "", price: 60, isFree: false, createdBy: 1 },
+  { id: 310, subjectId: 31, title: "Living Things Around Us", description: "Plants, animals and their features.",    status: "PUBLISHED", orderIndex: 0, videoId: "", price: 0,  isFree: true,  createdBy: 2 },
+  { id: 311, subjectId: 31, title: "Matter Around Us",        description: "Solids, liquids and gases.",             status: "PUBLISHED", orderIndex: 1, videoId: "", price: 70, isFree: false, createdBy: 2 },
+  { id: 320, subjectId: 32, title: "Parts of Speech",         description: "Nouns, verbs, adjectives and more.",     status: "PUBLISHED", orderIndex: 0, videoId: "", price: 0,  isFree: true,  createdBy: 2 },
+  { id: 321, subjectId: 32, title: "Reading Comprehension",   description: "Understanding what you read.",            status: "PUBLISHED", orderIndex: 1, videoId: "", price: 50, isFree: false, createdBy: 2 },
+  // ===== Class 7 =====
+  { id: 401, subjectId: 40, title: "Integers",                description: "Positive and negative numbers.",         status: "PUBLISHED", orderIndex: 1, videoId: "", price: 65, isFree: false, createdBy: 1 },
+  { id: 410, subjectId: 41, title: "The Cell",                description: "The basic unit of life.",                status: "PUBLISHED", orderIndex: 0, videoId: "", price: 0,  isFree: true,  createdBy: 2 },
+  { id: 411, subjectId: 41, title: "Heat and Temperature",    description: "How heat moves and is measured.",        status: "PUBLISHED", orderIndex: 1, videoId: "", price: 75, isFree: false, createdBy: 2 },
+  { id: 420, subjectId: 42, title: "Tenses",                  description: "Past, present and future.",              status: "PUBLISHED", orderIndex: 0, videoId: "", price: 0,  isFree: true,  createdBy: 2 },
+  { id: 421, subjectId: 42, title: "Essay Writing",          description: "Structure and style of a good essay.",   status: "PUBLISHED", orderIndex: 1, videoId: "", price: 55, isFree: false, createdBy: 2 },
+  // ===== Class 8 =====
+  { id: 501, subjectId: 50, title: "Light and Sound",         description: "Reflection, refraction and sound waves.", status: "PUBLISHED", orderIndex: 1, videoId: "", price: 80, isFree: false, createdBy: 1 },
+  { id: 510, subjectId: 51, title: "Algebra Basics",          description: "Variables and simple equations.",        status: "PUBLISHED", orderIndex: 0, videoId: "", price: 0,  isFree: true,  createdBy: 1 },
+  { id: 511, subjectId: 51, title: "Mensuration",             description: "Area and perimeter of shapes.",          status: "DRAFT",     orderIndex: 1, videoId: "", price: 85, isFree: false, createdBy: 1 },
+  { id: 520, subjectId: 52, title: "Grammar Essentials",      description: "Articles, prepositions and clauses.",    status: "PUBLISHED", orderIndex: 0, videoId: "", price: 0,  isFree: true,  createdBy: 2 },
+  { id: 521, subjectId: 52, title: "Letter Writing",          description: "Formal and informal letters.",           status: "PUBLISHED", orderIndex: 1, videoId: "", price: 60, isFree: false, createdBy: 2 },
 ];
 
 // chapter <-> teacher assignments
@@ -66,6 +105,28 @@ const topics = [
   { id: 2000, chapterId: 200, title: "Trigonometric Ratios",      description: "Sin, cos, tan.",       orderIndex: 0 },
   // Periodic Table (210)
   { id: 2100, chapterId: 210, title: "Groups and Periods",        description: "Layout of the table.", orderIndex: 0 },
+  // JSC/HSC free chapters
+  { id: 3000, chapterId: 300, title: "Introduction to Fractions", description: "What is a fraction?",    orderIndex: 0 },
+  { id: 4000, chapterId: 400, title: "Understanding Ratios",      description: "Comparing two numbers.", orderIndex: 0 },
+  { id: 5000, chapterId: 500, title: "What is Force?",            description: "Push and pull.",         orderIndex: 0 },
+  { id: 6000, chapterId: 600, title: "Introduction to Vectors",   description: "Arrows with meaning.",    orderIndex: 0 },
+  { id: 7000, chapterId: 700, title: "Inside the Atom",           description: "The building blocks.",   orderIndex: 0 },
+  // Class 6/7/8 expanded chapters
+  { id: 3010, chapterId: 301, title: "Angles and Shapes",        description: "Types of angles.",        orderIndex: 0 },
+  { id: 3100, chapterId: 310, title: "Plants and Animals",       description: "Grouping living things.", orderIndex: 0 },
+  { id: 3110, chapterId: 311, title: "States of Matter",         description: "Solid, liquid, gas.",     orderIndex: 0 },
+  { id: 3200, chapterId: 320, title: "Nouns and Verbs",          description: "The building blocks.",    orderIndex: 0 },
+  { id: 3210, chapterId: 321, title: "Reading a Passage",        description: "Finding the main idea.",  orderIndex: 0 },
+  { id: 4010, chapterId: 401, title: "The Number Line",          description: "Positive and negative.",  orderIndex: 0 },
+  { id: 4100, chapterId: 410, title: "Parts of a Cell",          description: "Nucleus, membrane…",      orderIndex: 0 },
+  { id: 4110, chapterId: 411, title: "Measuring Heat",           description: "Thermometers.",           orderIndex: 0 },
+  { id: 4200, chapterId: 420, title: "The Present Tense",        description: "Habitual actions.",       orderIndex: 0 },
+  { id: 4210, chapterId: 421, title: "Planning an Essay",        description: "Intro, body, conclusion.", orderIndex: 0 },
+  { id: 5010, chapterId: 501, title: "How Light Travels",        description: "In straight lines.",      orderIndex: 0 },
+  { id: 5100, chapterId: 510, title: "Introduction to Algebra",  description: "Letters for numbers.",    orderIndex: 0 },
+  { id: 5110, chapterId: 511, title: "Area of Rectangles",       description: "Length × width.",         orderIndex: 0 },
+  { id: 5200, chapterId: 520, title: "Using Articles",           description: "A, an, the.",             orderIndex: 0 },
+  { id: 5210, chapterId: 521, title: "Formal Letters",           description: "Layout and tone.",        orderIndex: 0 },
 ];
 
 // type: LECTURE | QUIZ | PDF
@@ -93,6 +154,28 @@ const contentItems = [
   { id: 20000, topicId: 2000, title: "Intro to Trig Ratios",        type: "LECTURE", orderIndex: 0 },
   // Topic 2100
   { id: 21000, topicId: 2100, title: "Reading the Periodic Table",  type: "LECTURE", orderIndex: 0 },
+  // JSC/HSC free chapter content
+  { id: 30000, topicId: 3000, title: "Fractions — video lesson",    type: "LECTURE", orderIndex: 0 },
+  { id: 40000, topicId: 4000, title: "Ratios — video lesson",       type: "LECTURE", orderIndex: 0 },
+  { id: 50000, topicId: 5000, title: "Force basics — video",        type: "LECTURE", orderIndex: 0 },
+  { id: 60000, topicId: 6000, title: "Vectors — video",             type: "LECTURE", orderIndex: 0 },
+  { id: 70000, topicId: 7000, title: "Atomic structure — video",    type: "LECTURE", orderIndex: 0 },
+  // Class 6/7/8 expanded content
+  { id: 30100, topicId: 3010, title: "Angles — video lesson",       type: "LECTURE", orderIndex: 0 },
+  { id: 31000, topicId: 3100, title: "Living things — video",       type: "LECTURE", orderIndex: 0 },
+  { id: 31100, topicId: 3110, title: "States of matter — video",    type: "LECTURE", orderIndex: 0 },
+  { id: 32000, topicId: 3200, title: "Nouns & verbs — video",       type: "LECTURE", orderIndex: 0 },
+  { id: 32100, topicId: 3210, title: "Reading skills — video",      type: "LECTURE", orderIndex: 0 },
+  { id: 40100, topicId: 4010, title: "Integers — video",            type: "LECTURE", orderIndex: 0 },
+  { id: 41000, topicId: 4100, title: "The cell — video",            type: "LECTURE", orderIndex: 0 },
+  { id: 41100, topicId: 4110, title: "Heat — video",                type: "LECTURE", orderIndex: 0 },
+  { id: 42000, topicId: 4200, title: "Present tense — video",       type: "LECTURE", orderIndex: 0 },
+  { id: 42100, topicId: 4210, title: "Essay planning — video",      type: "LECTURE", orderIndex: 0 },
+  { id: 50100, topicId: 5010, title: "How light travels — video",   type: "LECTURE", orderIndex: 0 },
+  { id: 51000, topicId: 5100, title: "Intro to algebra — video",    type: "LECTURE", orderIndex: 0 },
+  { id: 51100, topicId: 5110, title: "Area of rectangles — video",  type: "LECTURE", orderIndex: 0 },
+  { id: 52000, topicId: 5200, title: "Articles — video",            type: "LECTURE", orderIndex: 0 },
+  { id: 52100, topicId: 5210, title: "Formal letters — video",      type: "LECTURE", orderIndex: 0 },
 ];
 
 // Subtype payloads keyed by contentItemId
@@ -106,6 +189,26 @@ const lectures = {
   12000: { id: 92000, videoId: "",            content: "<p>The present tense describes habitual or current actions.</p>" },
   20000: { id: 92100, videoId: "",            content: "<p>In a right triangle: sin = opp/hyp, cos = adj/hyp, tan = opp/adj.</p>" },
   21000: { id: 92110, videoId: "",            content: "<p>Rows are periods, columns are groups. Elements in a group share properties.</p>" },
+  30000: { id: 93000, videoId: "dQw4w9WgXcQ", content: "<p>A <strong>fraction</strong> shows part of a whole — like 3/4 of a pizza.</p>" },
+  40000: { id: 93010, videoId: "",            content: "<p>A <strong>ratio</strong> compares two quantities, e.g. 2:3.</p>" },
+  50000: { id: 93020, videoId: "",            content: "<p>A <strong>force</strong> is a push or a pull that can change motion.</p>" },
+  60000: { id: 93030, videoId: "",            content: "<p>A <strong>vector</strong> has both magnitude and direction.</p>" },
+  70000: { id: 93040, videoId: "",            content: "<p>An atom has protons, neutrons and electrons.</p>" },
+  30100: { id: 94001, videoId: "",            content: "<p>An <strong>angle</strong> is formed where two lines meet.</p>" },
+  31000: { id: 94002, videoId: "",            content: "<p>Living things are grouped into plants and animals.</p>" },
+  31100: { id: 94003, videoId: "",            content: "<p>Matter exists as a solid, a liquid or a gas.</p>" },
+  32000: { id: 94004, videoId: "",            content: "<p>A noun names something; a verb shows action.</p>" },
+  32100: { id: 94005, videoId: "",            content: "<p>Read carefully and find the main idea of the passage.</p>" },
+  40100: { id: 94006, videoId: "",            content: "<p>Integers include positive numbers, negative numbers and zero.</p>" },
+  41000: { id: 94007, videoId: "",            content: "<p>The <strong>cell</strong> is the basic unit of life.</p>" },
+  41100: { id: 94008, videoId: "",            content: "<p>Heat flows from hot to cold; temperature is measured in °C.</p>" },
+  42000: { id: 94009, videoId: "",            content: "<p>The present tense describes habitual or current actions.</p>" },
+  42100: { id: 94010, videoId: "",            content: "<p>An essay has an introduction, a body and a conclusion.</p>" },
+  50100: { id: 94011, videoId: "",            content: "<p>Light travels in straight lines called rays.</p>" },
+  51000: { id: 94012, videoId: "",            content: "<p>Algebra uses letters to stand for unknown numbers.</p>" },
+  51100: { id: 94013, videoId: "",            content: "<p>Area of a rectangle = length × width.</p>" },
+  52000: { id: 94014, videoId: "",            content: "<p>Use 'a', 'an' and 'the' correctly in sentences.</p>" },
+  52100: { id: 94015, videoId: "",            content: "<p>A formal letter follows a fixed layout and a polite tone.</p>" },
 };
 
 const pdfs = {
@@ -183,9 +286,13 @@ const quizzes = {
 
 // ---- Featured chapters -----------------------------------------------------
 const featured = [
-  { chapterId: 100, featuredAt: "2026-05-01T10:00:00" },
-  { chapterId: 110, featuredAt: "2026-05-15T10:00:00" },
-  { chapterId: 200, featuredAt: "2026-06-01T10:00:00" },
+  { chapterId: 100, featuredAt: "2026-05-01T10:00:00" }, // Class 9 (SSC)
+  { chapterId: 110, featuredAt: "2026-05-15T10:00:00" }, // Class 9 (SSC)
+  { chapterId: 200, featuredAt: "2026-06-01T10:00:00" }, // Class 10 (SSC)
+  { chapterId: 300, featuredAt: "2026-06-10T10:00:00" }, // Class 6 (JSC)
+  { chapterId: 500, featuredAt: "2026-06-12T10:00:00" }, // Class 8 (JSC)
+  { chapterId: 600, featuredAt: "2026-06-15T10:00:00" }, // Class 11 (HSC)
+  { chapterId: 700, featuredAt: "2026-06-18T10:00:00" }, // Class 12 (HSC)
 ];
 
 // ---- Enrollments (student access to chapters) ------------------------------
